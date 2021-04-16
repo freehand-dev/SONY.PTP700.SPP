@@ -37,6 +37,7 @@ steps:
   displayName: 'nuget push'
   inputs:
     command: 'push'
+    arguments: '--skip-duplicate'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '3d77afcb-a6e8-4ae6-87cb-78ceee997060'
