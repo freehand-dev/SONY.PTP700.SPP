@@ -3,16 +3,12 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-# the build will trigger on any changes to the master branch
 trigger:
 - master
 
-# the build will run on a Microsoft hosted agent, using the lastest Windows VM Image
 pool:
   vmImage: 'ubuntu-latest'
 
-# these variables are available throughout the build file
-# just the build configuration is defined, in this case we are building Release packages
 variables:
   buildConfiguration: 'Release'
 
@@ -35,11 +31,10 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'nuget push'
+  continueOnError: true
   inputs:
     command: 'push'
-    arguments: '--skip-duplicate'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '3d77afcb-a6e8-4ae6-87cb-78ceee997060'
     versioningScheme: 'off'
-    allowPackageConflicts: true
