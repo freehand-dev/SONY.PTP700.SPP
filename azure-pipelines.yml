@@ -16,10 +16,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-#The build has 3 seperate tasks run under 1 step
 steps:
-
-# The first task is the dotnet command build, pointing to our csproj file
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
@@ -27,8 +24,6 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
     projects: 'SONY.PTP700.SPP/SONY.PTP700.SPP.csproj'
 
-# The second task is dotnet pack command again pointing to the csproj file
-# The nobuild means the project will not be compiled before running pack, because its already built in above step
 - task: DotNetCoreCLI@2
   displayName: "dotnet pack"
   inputs:
@@ -38,17 +33,11 @@ steps:
     nobuild: true
     versioningScheme: 'off'
 
-# The last task is a nuget command, nuget push
-# This will push any .nupkg files to the 'oleksandrnazaruk-feed' artifact feed
-# allowPackageConflicts allows us to build the same version and not throw an error when trying to push
-# instead it just ingores the latest package unless the version changes
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'nuget push'
   inputs:
     command: 'push'
-    feedsToUse: 'select'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'oleksandrnazaruk-feed'
+    publishVstsFeed: '3d77afcb-a6e8-4ae6-87cb-78ceee997060'
     versioningScheme: 'off'
-    allowPackageConflicts: true
