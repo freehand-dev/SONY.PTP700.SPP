@@ -24,10 +24,12 @@ steps:
   displayName: "dotnet pack"
   inputs:
     command: 'pack'
-    arguments: '--configuration $(buildConfiguration)'
     packagesToPack: 'SONY.PTP700.SPP/SONY.PTP700.SPP.csproj'
     nobuild: true
-    versioningScheme: 'off'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
 
 - task: NuGetCommand@2
   displayName: 'nuget push'
@@ -36,5 +38,4 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '3d77afcb-a6e8-4ae6-87cb-78ceee997060'
-    allowPackageConflicts: true
 
