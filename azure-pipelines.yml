@@ -26,7 +26,10 @@ steps:
     command: 'pack'
     packagesToPack: 'SONY.PTP700.SPP/SONY.PTP700.SPP.csproj'
     nobuild: true
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
 
 - task: NuGetCommand@2
   displayName: 'nuget push'
