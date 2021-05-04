@@ -8,24 +8,8 @@ namespace SONY.PTP700.SPP.PacketFactory.Command
 {
     public class CcuFunction01 : Message50.SPpCommandPair
     {
-        public enum CmdGPEnum : byte
-        {
-            Relative = 0x40,
-            Absolute = 0x41,
-        }
-        static public byte _PARAM_0 = 0x12;
 
-        public CcuFunction01.CmdGPEnum CmdGP
-        {
-            get
-            {
-                return (CcuFunction01.CmdGPEnum)this.CMD_GP;
-            }
-            set
-            {
-                this.CMD_GP = (byte)value;
-            }
-        }
+        static public byte _PARAM_0 = 0x12;
 
         public bool Mono
         {
@@ -41,7 +25,7 @@ namespace SONY.PTP700.SPP.PacketFactory.Command
             }
         }
 
-        public CcuFunction01(CcuFunction00.CmdGPEnum cmdGP)
+        public CcuFunction01(PacketFactory.SppCommnadGroup cmdGP)
             : base((byte)cmdGP, CcuFunction00._PARAM_0)
         {
 

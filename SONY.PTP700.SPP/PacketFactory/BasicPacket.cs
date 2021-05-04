@@ -12,6 +12,7 @@ namespace SONY.PTP700.SPP.PacketFactory
         RCP = 0x90,
         HSCU = 0x40,
         MSU = 0x70,
+        CHU = 0x20,
     };
 
     public enum DeviceModel : byte

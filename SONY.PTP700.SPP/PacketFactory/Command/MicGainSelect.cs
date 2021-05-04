@@ -17,13 +17,10 @@ namespace SONY.PTP700.SPP.PacketFactory.Command
 
 
 
+
+
     public class MicGainSelect
     {
-        public enum CmdGPEnum : byte
-        {
-            Relative = 0x20,
-            Absolute = 0x21,
-        }
         public enum MicGainValue : byte
         {
             Inc = 0x80,
@@ -71,19 +68,7 @@ namespace SONY.PTP700.SPP.PacketFactory.Command
             }
         }
 
-        public MicGainSelect.CmdGPEnum CmdGP
-        {
-            get
-            {
-                return (MicGainSelect.CmdGPEnum)this.CMD_GP;
-            }
-            set
-            {
-                this.CMD_GP = (byte)value;
-            }
-        }
-
-        public mic1_gain_select(MicGainSelect.CmdGPEnum cmdGP)
+        public mic1_gain_select(PacketFactory.SppCommnadGroup cmdGP)
             : base((byte)cmdGP, (byte)MicGainSelect.MicGainChannel.Ch01)
         {
 
@@ -126,20 +111,7 @@ namespace SONY.PTP700.SPP.PacketFactory.Command
             }
         }
 
-        public MicGainSelect.CmdGPEnum CmdGP
-        {
-            get
-            {
-                return (MicGainSelect.CmdGPEnum)this.CMD_GP;
-            }
-            set
-            {
-                this.CMD_GP = (byte)value;
-            }
-        }
-
-
-        public mic2_gain_select(MicGainSelect.CmdGPEnum cmdGP)
+        public mic2_gain_select(PacketFactory.SppCommnadGroup cmdGP)
             : base((byte)cmdGP, (byte)MicGainSelect.MicGainChannel.Ch02)
         {
 

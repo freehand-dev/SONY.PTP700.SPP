@@ -289,7 +289,7 @@ namespace SONY.PTP700.SPP
                 };
 
                 // Add Command
-                _packet.Commands.Add(new PacketFactory.Command.CcuFunction00(PacketFactory.Command.CcuFunction00.CmdGPEnum.Relative)
+                _packet.Commands.Add(new PacketFactory.Command.CcuFunction00(PacketFactory.SppCommnadGroup.CCU_SWITCH_REL)
                 {
                     Bars = true,
                     Chroma = false,
@@ -302,7 +302,7 @@ namespace SONY.PTP700.SPP
                 {
                     var _message50 = (_response.NextPacket as PacketFactory.Message50);
                     var _command = _message50?.Commands.Get(
-                        (byte)PacketFactory.Command.CcuFunction00.CmdGPEnum.Absolute,
+                        PacketFactory.SppCommnadGroup.CCU_SWITCH_ABS,
                         PacketFactory.Command.CcuFunction00._PARAM_0
                     );
 
@@ -337,7 +337,7 @@ namespace SONY.PTP700.SPP
                 };
 
                 // Add Command
-                _packet.Commands.Add(new PacketFactory.Command.CcuFunction00(PacketFactory.Command.CcuFunction00.CmdGPEnum.Relative)
+                _packet.Commands.Add(new PacketFactory.Command.CcuFunction00(PacketFactory.SppCommnadGroup.CCU_SWITCH_REL)
                 {
                     Bars = false,
                     Chroma = false,
@@ -350,7 +350,7 @@ namespace SONY.PTP700.SPP
                 {
                     var _message50 = (_response.NextPacket as PacketFactory.Message50);
                     var _command = _message50?.Commands.Get(
-                        (byte)PacketFactory.Command.CcuFunction00.CmdGPEnum.Absolute,
+                        PacketFactory.SppCommnadGroup.CCU_SWITCH_ABS,
                         PacketFactory.Command.CcuFunction00._PARAM_0
                     );
 
@@ -384,12 +384,12 @@ namespace SONY.PTP700.SPP
                 };
 
                 // Add Command
-                _packet.Commands.Add(new PacketFactory.Command.mic1_gain_select(PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute)
+                _packet.Commands.Add(new PacketFactory.Command.mic1_gain_select(PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS)
                 {
                     Value = micGainValue
                 });
 
-                _packet.Commands.Add(new PacketFactory.Command.mic2_gain_select(PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute)
+                _packet.Commands.Add(new PacketFactory.Command.mic2_gain_select(PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS)
                 {
                     Value = micGainValue
                 });
@@ -402,7 +402,7 @@ namespace SONY.PTP700.SPP
 
                     {
                         var _command = _message50?.Commands.Get(
-                            (byte)PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute,
+                            PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS,
                             (byte)PacketFactory.Command.MicGainSelect.MicGainChannel.Ch01
                         );
 
@@ -414,7 +414,7 @@ namespace SONY.PTP700.SPP
 
                     {
                         var _command = _message50?.Commands.Get(
-                            (byte)PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute,
+                            PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS,
                             (byte)PacketFactory.Command.MicGainSelect.MicGainChannel.Ch02
                         );
 
@@ -448,7 +448,7 @@ namespace SONY.PTP700.SPP
                 };
 
                 // Add Command
-                _packet.Commands.Add(new PacketFactory.Command.mic1_gain_select(PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute)
+                _packet.Commands.Add(new PacketFactory.Command.mic1_gain_select(PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS)
                 {
                     Value = micGainValue
                 }); ;
@@ -459,7 +459,7 @@ namespace SONY.PTP700.SPP
                 {
                     var _message50 = (_response.NextPacket as PacketFactory.Message50);
                     var _command = _message50?.Commands.Get(
-                        (byte)PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute,
+                        PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS,
                         (byte)PacketFactory.Command.MicGainSelect.MicGainChannel.Ch01
                     );
 
@@ -491,7 +491,7 @@ namespace SONY.PTP700.SPP
                 };
 
                 // Add Command
-                _packet.Commands.Add(new PacketFactory.Command.mic2_gain_select(PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute)
+                _packet.Commands.Add(new PacketFactory.Command.mic2_gain_select(PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS)
                 {
                     Value = micGainValue
                 }); ;
@@ -502,7 +502,7 @@ namespace SONY.PTP700.SPP
                 {
                     var _message50 = (_response.NextPacket as PacketFactory.Message50);
                     var _command = _message50?.Commands.Get(
-                        (byte)PacketFactory.Command.MicGainSelect.CmdGPEnum.Absolute,
+                        PacketFactory.SppCommnadGroup.CHU_SWITCH_ABS,
                         (byte)PacketFactory.Command.MicGainSelect.MicGainChannel.Ch01
                     );
 
